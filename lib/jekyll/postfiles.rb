@@ -4,7 +4,7 @@ require "jekyll"
 require "pathname"
 
 module PostFiles
-  class PostFileGenerator < Generator
+  class PostFileGenerator < Jekyll::Generator
     FIXED_DATE_FILENAME_MATCHER = %r!^(?:.+/)*(\d{2,4}-\d{1,2}-\d{1,2})-([^/]*)(\.[^.]+)$!.freeze
 
     # _posts/
