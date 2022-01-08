@@ -39,6 +39,8 @@ module Jekyll
       # dest - The String path to the containing folder of the document which is output - /dist/blog/[:tag/]*:year/:month/:day
       def initialize(site, base, dir, name, dest)
         super(site, base, dir, name)
+        Jekyll.logger.warn("[PostFiles]", "#{name}")
+        Jekyll.logger.warn("[PostFiles]", "#{dest}")
         @name = name
         @dest = dest
       end
@@ -71,8 +73,8 @@ module Jekyll
         posts_src_dir = site_srcroot + "_posts"
         drafts_src_dir = site_srcroot + "_drafts"
 
-        # Jekyll.logger.warn("[PostFiles]", "_posts: #{posts_src_dir}")
-        # Jekyll.logger.warn("[PostFiles]", "docs: #{site.posts.docs.map(&:path)}")
+        Jekyll.logger.warn("[PostFiles]", "_posts: #{posts_src_dir}")
+        Jekyll.logger.warn("[PostFiles]", "docs: #{site.posts.docs.map(&:path)}")
 
         docs_with_dirs = site.posts.docs
           .reject do |doc|
