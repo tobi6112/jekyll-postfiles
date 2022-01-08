@@ -20,14 +20,14 @@ module Jekyll
     #
     # our plugin changes the regex, to:
     #   avoid false positive when directory name matches date regex
-    Hooks.register :site, :after_reset do |_site|
+    #Hooks.register :site, :after_reset do |_site|
       # Suppress warning messages.
-      original_verbose = $VERBOSE
-      $VERBOSE = nil
-      Document.const_set("DATE_FILENAME_MATCHER", PostFileGenerator::FIXED_DATE_FILENAME_MATCHER)
-      # Activate warning messages again.
-      $VERBOSE = original_verbose
-    end
+#      original_verbose = $VERBOSE
+#      $VERBOSE = nil
+#      Document.const_set("DATE_FILENAME_MATCHER", PostFileGenerator::FIXED_DATE_FILENAME_MATCHER)
+#      # Activate warning messages again.
+#      $VERBOSE = original_verbose
+#    end
 
     class PostFile < StaticFile
       # Initialize a new PostFile.
@@ -83,7 +83,7 @@ module Jekyll
             end
           end
 
-        # Jekyll.logger.warn("[PostFiles]", "postdirs: #{docs_with_dirs.map{|doc| Pathname.new(doc.path).dirname}}")
+        Jekyll.logger.warn("[PostFiles]", "postdirs: #{docs_with_dirs.map{|doc| Pathname.new(doc.path).dirname}}")
 
         assets = docs_with_dirs.map do |doc|
           dest_dir = Pathname.new(doc.destination("")).dirname
